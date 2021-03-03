@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title%} To Do List | Edit Item {% endblock %}
+
+{% block content %}
+<p>Edit Item</p>
+{% if item %}
+    <form action="{% url 'edit' item.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="{{ item.item }}" name="item" value="{{ item.item }}">
+        <button type="submit">submit</button>
+    </form>
+{% else %}
+    <p>That item could not be found.</p>
+{% endif %}
+{% endblock %}
